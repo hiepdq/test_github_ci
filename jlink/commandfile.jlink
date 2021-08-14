@@ -1,0 +1,10 @@
+ip tunnel:hiepdinh1992:hiephiep:jlink-asia.segger.com
+ip tunnel:hiepdinh1992:hiephiep:jlink-asia.segger.com
+si SWD
+speed 4000
+r
+h
+loadfile ./build/test.hex
+r
+g
+qc
