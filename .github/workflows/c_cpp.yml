@@ -23,4 +23,4 @@ jobs:
     - name: make build
       run: |
         sudo make -j128
-        sudo make cpplint .
+        sudo make cpplinter CPPLINTER_FILE=.
