@@ -186,7 +186,25 @@ clean:
 #######################################
 -include $(wildcard $(BUILD_DIR)/*.d)
 
-.PHONY: JLINK
-JLINK:
-	JLinkExe -device STM32F103C8 -CommandFile ./jlink/commandfile.jlink
+CPPLINTER_FILE ?=
+CPPLINTER_FLAGS := \
+										--verbose=1 \
+										--quiet \
+										--counting=detailed \
+										--includeorder=standardcfirst \
+										--recursive
+
+CPPLINTER_FILTER := --filter=-legal/copyright,-build/header_guard,-whitespace/line_length,-build/include_subdir
+
+CPPLINTER_EXCLUDE := \
+											./Drivers
+
+.PHONY: cpplinter
+cpplinter:
+	$(V1) cpplint \
+	$(CPPLINTER_FLAGS) \
+	$(CPPLINTER_FILTER) \
+	$(addprefix --exclude=,$(CPPLINTER_EXCLUDE)) \
+	$(CPPLINTER_FILE)
+
 # *** EOF ***
