@@ -19,7 +19,7 @@ jobs:
         sudo apt install -y gcc-arm-none-eabi
         sudo apt install -y python3
         sudo apt install -y python3-pip
-        sudo pip3 cpplint
+        sudo pip3 install cpplint
     - name: make build
       run: |
         sudo make -j128
