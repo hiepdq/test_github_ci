@@ -216,7 +216,7 @@ CPPCHECK_EXCLUDE_SOURCE :=
 CPPCHECK_FILE ?= .
 cppcheck-file:
 	@mkdir -p $(CPPCHECK_CATCHED_DIR)
-	$(V1) $(CPPCHECK_TOOL) \
+	cppcheck \
 	$(CPPCHECK_FLAGS) \
 	$(addprefix --cppcheck-build-dir=,$(CPPCHECK_CATCHED_DIR)) \
 	$(addprefix --addon=,$(CPPCHECK_ADDON)) \
