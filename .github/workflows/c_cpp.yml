@@ -17,10 +17,13 @@ jobs:
       run: |
         sudo apt install -y 
         sudo apt install -y gcc-arm-none-eabi
+        sudo apt install cppcheck
         sudo apt install -y python3
         sudo apt install -y python3-pip
         sudo pip3 install cpplint
     - name: make build
       run: |
         sudo make -j128
+        sudo make cppcheck-file CPPCHECK_FILE=.
         sudo make cpplinter CPPLINTER_FILE=.
+				
