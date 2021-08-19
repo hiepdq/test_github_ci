@@ -201,7 +201,7 @@ CPPLINTER_EXCLUDE := \
 
 .PHONY: cpplinter
 cpplinter:
-	$(V1) cpplint \
+	cpplint \
 	$(CPPLINTER_FLAGS) \
 	$(CPPLINTER_FILTER) \
 	$(addprefix --exclude=,$(CPPLINTER_EXCLUDE)) \
