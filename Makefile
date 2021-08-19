@@ -207,7 +207,7 @@ cpplinter:
 	$(addprefix --exclude=,$(CPPLINTER_EXCLUDE)) \
 	$(CPPLINTER_FILE)
 
-
+CPPCHECK_CATCHED_DIR := cppcheck_cached
 CPPCHECK_INC_PATH := $(filter-out ./Drivers/%,$(C_INCLUDES))
 CPPCHECK_DEFINE := 	$(CFLAGS) \
 										__GNUC__
