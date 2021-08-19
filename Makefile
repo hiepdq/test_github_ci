@@ -207,4 +207,23 @@ cpplinter:
 	$(addprefix --exclude=,$(CPPLINTER_EXCLUDE)) \
 	$(CPPLINTER_FILE)
 
+
+CPPCHECK_INC_PATH := $(filter-out ./Drivers/%,$(C_INCLUDES))
+CPPCHECK_DEFINE := 	$(CFLAGS) \
+										__GNUC__
+CPPCHECK_EXCLUDE_SOURCE :=
+.PHONY: cppcheck-file
+CPPCHECK_FILE ?= .
+cppcheck-file:
+	@mkdir -p $(CPPCHECK_CATCHED_DIR)
+	$(V1) $(CPPCHECK_TOOL) \
+	$(CPPCHECK_FLAGS) \
+	$(addprefix --cppcheck-build-dir=,$(CPPCHECK_CATCHED_DIR)) \
+	$(addprefix --addon=,$(CPPCHECK_ADDON)) \
+	$(addprefix --suppress=,$(CPPCHECK_SUPPRESS_LIST)) \
+	$(addprefix -I,$(CPPCHECK_INC_PATH)) \
+	$(addprefix -D,$(CPPCHECK_DEFINE)) \
+	$(addprefix -i,$(CPPCHECK_EXCLUDE_SOURCE)) \
+	$(CPPCHECK_FILE)
+
 # *** EOF ***
